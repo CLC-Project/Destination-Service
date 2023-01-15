@@ -1,0 +1,14 @@
+{
+  "profiles": {
+    "DestinationService": {
+      "commandName": "Project",
+      "commandLineArgs": "--port 7165"
+    },
+    "Docker": {
+      "commandName": "Docker",
+      "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}",
+      "httpPort": 30076,
+      "useSSL": false
+    }
+  }
+}
