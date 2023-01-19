@@ -39,7 +39,7 @@ namespace DestinationService.Functions
         #region Get
 
         [FunctionName("Destinations_GetById")]
-        public static async Task<IActionResult> GetById([HttpTrigger(AuthorizationLevel.Function, "get", Route = "destinations/{id}")] HttpRequest req, 
+        public static async Task<IActionResult> GetById([HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "destinations/{id}")] HttpRequest req, 
                                                          string id,
                                                          ILogger log)
         {
@@ -55,7 +55,7 @@ namespace DestinationService.Functions
 
 
         [FunctionName("Destinations_GetByUserId")]
-        public static async Task<IActionResult> GetByUserId([HttpTrigger(AuthorizationLevel.Function, "get", Route = "destinations/user/{userId}")] HttpRequest req,
+        public static async Task<IActionResult> GetByUserId([HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "destinations/user/{userId}")] HttpRequest req,
                                                              string userId,
                                                              ILogger log)
         {
@@ -74,7 +74,7 @@ namespace DestinationService.Functions
 
         [FunctionName("Destinations_Post")]
         [return: ServiceBus(_queueName, Connection = _serviceBusConnection)]
-        public static async Task<DestinationCrudEvent> Post([HttpTrigger(AuthorizationLevel.Function, "post", Route = "destinations")] DestinationDto dto, 
+        public static async Task<DestinationCrudEvent> Post([HttpTrigger(AuthorizationLevel.Anonymous, "post", Route = "destinations")] DestinationDto dto, 
                                                              ILogger log)
         {
             log.LogInformation($"{DateTime.Now}: insert new destination");
@@ -98,7 +98,7 @@ namespace DestinationService.Functions
 
         [FunctionName("Destinations_Delete")]
         [return: ServiceBus(_queueName, Connection = _serviceBusConnection)]
-        public static async Task<DestinationCrudEvent> Delete([HttpTrigger(AuthorizationLevel.Function, "delete", Route = "destinations/{id}")] HttpRequest req,
+        public static async Task<DestinationCrudEvent> Delete([HttpTrigger(AuthorizationLevel.Anonymous, "delete", Route = "destinations/{id}")] HttpRequest req,
                                                         string id,
                                                         ILogger log)
         {
